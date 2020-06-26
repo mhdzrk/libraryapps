@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title><%=title%></title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="/css/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <header class="navbar navbar-bright navbar-fixed-top" role="banner">
+            <div class="container">
+              <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">Home</a>
+              </div>
+              <nav class="collapse navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                  <%for(i=0;i<nav.length;i++){%>
+                  <li>
+                    <a href="<%=nav[i].link%>"><%=nav[i].name%></a>
+                  </li>
+                  <%};%>
+                </ul>
+                <ul class="nav navbar-right navbar-nav">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
+                    <ul class="dropdown-menu" style="padding:12px;">
+                      <form class="form-inline">
+                        <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
+                      </form>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </header>
+          <div id="masthead">  
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7">
+                  <h1>EDIT AUTHOR
+                    <p class="lead"></p>
+                  </h1>
+                </div>
+                <div class="col-md-5">
+                  <div class="well well-lg"> 
+                    <div class="row">
+                      <div class="col-sm-12">
+                        
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div><!-- /cont -->
+        </div>
+        <div class="container-fluid" style="width:100%">
+            <div class="box">
+                <form method="GET"  action="/authors/<%=author._id%>/edit/ok">
+                    
+                    <div class="form-group" style="margin: 5px;">
+                        <label>Name</label>
+                        <input type="text" name="name" value="<%=author.name%>"  class="form-control">
+                        
+                    </div>
+                    <div class="form-group" style="margin: 5px;">
+                      <label>Work</label>
+                      <input type="text" name="work" value="<%=author.work%>"  class="form-control">
+                      
+                  </div>
+                  
+                <div class="form-group" style="margin: 5px;">
+                  <label>Genre</label>
+                  <input type="text" name="genre" value="<%=author.genre%>"  class="form-control">
+                  
+              </div>
+             
+              <div class="form-group" style="margin: 5px;">
+                <label>Image</label>
+                
+                <img src="/images/<%=author.image%>" alt="no image" style="width: 100px; height: 100px;" class="form-control">
+            
+                <input type="file" id="image" name="image" style="display: none;" class="form-control">
+                <p id="hide">double click on image to change the image</p>
+                </div>
+            
+                <div class="form-group" style="margin: 5px;">
+              
+                    <button type="submit" id="SUBMIT"  class="form-control">UPDATE</button>
+              
+                </div>
+                </form>
+                <div class="text-center"><a href="/books"> read a book</a></div>
+                
+
+            </div>
+            
+        </div>
+        <div class="container" id="end" style="margin-top:550px;">
+          <div class="row">
+            <div class="col col-sm-12">
+              
+              <h1>Follow Us</h1>
+              <div class="btn-group">
+               <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
+             <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
+             <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+        <hr>
+        
+        <hr>
+        
+        <footer>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6">
+                <ul class="list-inline">
+                  <li><i class="icon-facebook icon-2x"></i></li>
+                  <li><i class="icon-twitter icon-2x"></i></li>
+                  <li><i class="icon-google-plus icon-2x"></i></li>
+                  <li><i class="icon-pinterest icon-2x"></i></li>
+                </ul>
+                
+              </div>
+              <div class="col-sm-6">
+                  <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>      
+              </div>
+            </div>
+          </div>
+        </footer>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('img').dblclick(()=>{
+                    $('img').css('display','none');
+                    $('#hide').css('display','none');
+                    $('#image').css('display','inline')
+
+                })
+            })
+        </script>
+        
+</body>
+</html>
